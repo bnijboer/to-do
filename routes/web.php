@@ -14,10 +14,10 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/',             [TaskController::class, 'index']);
-Route::get('/create',       [TaskController::class, 'create']);
+Route::get('/',             [TaskController::class, 'index'])->name('index');
+Route::get('/create',       [TaskController::class, 'create'])->name('create');
 Route::post('/',            [TaskController::class, 'store']);
-Route::get('/{task}',       [TaskController::class, 'show']);
+Route::get('/{task}',       [TaskController::class, 'show'])->name('show');
 Route::get('/{task}/edit',  [TaskController::class, 'edit']);
 Route::put('/{task}',       [TaskController::class, 'update']);
 Route::delete('/{task}',    [TaskController::class, 'destroy']);

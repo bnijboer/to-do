@@ -10,10 +10,31 @@
             @method('PUT')
             
             <div>
-                <input type="text" name="description" value="{{ $task->description }}">
+                <label for="description">
+                    <strong>
+                        Description
+                    </strong>
+                </label>
+                <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    value="{{ $task->description }}"
+                    required
+                >
             </div>
             <div>
-                <input type="file" name="file" value="{{ $task->image }}">
+                <label for="image">
+                    <strong>
+                        Image
+                    </strong>
+                </label>
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    value="{{ $task->image }}"
+                >
             </div>
             <p>
                 <button type="submit">

@@ -10,10 +10,14 @@
         
         <nav>
             <div>
-                <a href="/">All Tasks</a>
+                <a href="{{ route('index') }}">
+                    All Tasks
+                </a>
             </div>
             <div>
-                <a href="/create">New Task</a>
+                <a href="{{ route('create') }}">
+                    New Task
+                </a>
             </div>
         </nav>
         

@@ -9,7 +9,9 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return view('tasks.index', ['tasks' => Task::all()]);
+        return view('tasks.index', [
+            'tasks' => Task::all()
+        ]);
     }
     
     public function create()
@@ -19,29 +21,40 @@ class TaskController extends Controller
     
     public function store()
     {
-        //
+        Task::create(
+            $this->validateData()
+        );
+        
+        return redirect()->route('index');
     }
     
     public function show(Task $task)
     {
-        return view('tasks.show', ['task' => $task]);
+        return view('tasks.show', [
+            'task' => $task
+        ]);
     }
     
     public function edit(Task $task)
     {
-        return view('tasks.edit', ['task' => $task]);
+        return view('tasks.edit', [
+            'task' => $task
+        ]);
     }
     
     public function update(Task $task)
     {
-        //
+        $task->update($this->validateData());
+        
+        return redirect()
+            ->route('show', [$task]);
     }
     
     public function destroy(Task $task)
     {
         $task->delete();
         
-        return redirect('/');
+        return redirect()->route('index');
     }
     
     public function check(Task $task)
@@ -50,5 +63,13 @@ class TaskController extends Controller
         $task->save();
         
         return redirect()->back();
+    }
+    
+    public function validateData()
+    {
+        return request()->validate([
+            'description' => ['required'],
+            'image' => [],
+        ]);
     }
 }
