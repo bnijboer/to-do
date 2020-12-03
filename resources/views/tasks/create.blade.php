@@ -10,9 +10,7 @@
             
             <div>
                 <label for="description">
-                    <strong>
-                        Description
-                    </strong>
+                    <strong>Description</strong>
                 </label>
                 <input
                     type="text"
@@ -24,9 +22,7 @@
             </div>
             <div>
                 <label for="image">
-                    <strong>
-                        Image
-                    </strong>
+                    <strong>Image</strong>
                 </label>
                 <input
                     type="file"

@@ -6,7 +6,7 @@
 
     @forelse ($tasks as $task)
         <div>
-            <a href="/{{ $task->id }}/check">
+            <a href="/{{ $task->id }}/mark">
                 Check
             </a>
             <a href="/{{ $task->id }}">
@@ -18,7 +18,9 @@
                 @csrf
                 @method('DELETE')
                 
-                <button type="submit">Delete</button>
+                <button type="submit">
+                    Delete
+                </button>
             </form>
         </div>
     @empty

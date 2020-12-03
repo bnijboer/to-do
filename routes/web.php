@@ -21,4 +21,4 @@ Route::get('/{task}',       [TaskController::class, 'show'])->name('show');
 Route::get('/{task}/edit',  [TaskController::class, 'edit']);
 Route::put('/{task}',       [TaskController::class, 'update']);
 Route::delete('/{task}',    [TaskController::class, 'destroy']);
-Route::get('/{task}/check', [TaskController::class, 'check']);
+Route::get('/{task}/mark',  [TaskController::class, 'mark']);

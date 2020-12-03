@@ -57,7 +57,7 @@ class TaskController extends Controller
         return redirect()->route('index');
     }
     
-    public function check(Task $task)
+    public function mark(Task $task)
     {
         $task->toggleCompleted();
         $task->save();

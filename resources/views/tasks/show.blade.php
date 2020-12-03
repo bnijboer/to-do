@@ -5,23 +5,36 @@
     <h1>Task</h1>
     
     <p>
-        <strong>Description: </strong>  {{ $task->description }}
+        <strong>Description:</strong>
+        
+        {{ $task->description }}
     </p>
     <p>   
-        <strong>Image: </strong>        {{ $task->image }}
+        <strong>Image:</strong>
+        
+        @if (!empty($task->image)) 
+            {{ $task->image }}
+        @else
+            none
+        @endif
     </p>
     <p>
-        <strong>Created At: </strong>   {{ $task->created_at }} 
+        <strong>Created at:</strong>
+        
+        {{ $task->created_at }} 
     </p>
     <p>   
-        <strong>Completed: </strong>    {{ $task->completed ? 'Yes' : 'No' }}
-        (<a href="/{{ $task->id }}/check">Toggle</a>)
+        <strong>Completed:</strong>
+        
+        {{ $task->completed ? 'yes' : 'no' }}
+        
+        (<a href="/{{ $task->id }}/mark">toggle</a>)
     </p>
     <p>
         <a href="/{{ $task->id }}/edit">
-            Edit Task
+            Edit
         </a>
-        <form class="inline" action="/{{ $task->id }}" method="POST">
+        <form action="/{{ $task->id }}" method="POST">
             @csrf
             @method('DELETE')
             
