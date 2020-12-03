@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ config('app.name') }}</title>
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         
         <nav>
             <div>
-                <a href="/">Current Tasks</a>
+                <a href="/">All Tasks</a>
             </div>
             <div>
-                <a href="/create">Add Task</a>
+                <a href="/create">New Task</a>
             </div>
         </nav>
         

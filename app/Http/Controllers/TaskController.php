@@ -32,14 +32,16 @@ class TaskController extends Controller
         return view('tasks.edit', ['task' => $task]);
     }
     
-    public function update()
+    public function update(Task $task)
     {
         //
     }
     
-    public function destroy()
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        
+        return redirect('/');
     }
     
     public function check(Task $task)

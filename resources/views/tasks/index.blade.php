@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Current Tasks</h1>
+    <h1>All Tasks</h1>
 
     @forelse ($tasks as $task)
         <div>
@@ -10,10 +10,16 @@
                 Check
             </a>
             <a href="/{{ $task->id }}">
-                <span style="{{ ($task->completed ? 'text-decoration: line-through' : '') }}">
+                <span class="{{ ($task->completed ? 'task-completed' : '') }}">
                     {{ $task->description }}
                 </span>
             </a>
+            <form class="inline" action="/{{ $task->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                
+                <button type="submit">Delete</button>
+            </form>
         </div>
     @empty
         <p>

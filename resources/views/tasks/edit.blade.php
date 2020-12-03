@@ -16,9 +16,21 @@
                 <input type="file" name="file" value="{{ $task->image }}">
             </div>
             <p>
-                <button type="submit">Update</button>
+                <button type="submit">
+                    Update
+                </button>
             </p>
         </form>
+        <p>
+            <form action="/{{ $task->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                
+                <button type="submit">
+                    Delete
+                </button>
+            </form>
+        </p>
     </div>
 
 @endsection
