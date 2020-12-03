@@ -6,8 +6,13 @@
 
     @forelse ($tasks as $task)
         <div>
+            <a href="/{{ $task->id }}/check">
+                Check
+            </a>
             <a href="/{{ $task->id }}">
-                {{ $task->description }}
+                <span style="{{ ($task->completed ? 'text-decoration: line-through' : '') }}">
+                    {{ $task->description }}
+                </span>
             </a>
         </div>
     @empty

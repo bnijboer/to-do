@@ -13,6 +13,9 @@
     <p>
         <strong>Created At: </strong> {{ $task->created_at }} 
     </p>
+    <p>   
+        <strong>Completed: </strong> {{ $task->completed ? 'yes' : 'no' }}
+    </p>
     <p>
         <a href="/{{ $task->id }}/edit">Edit Task</a>
     </p>

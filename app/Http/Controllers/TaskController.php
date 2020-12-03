@@ -42,8 +42,11 @@ class TaskController extends Controller
         //
     }
     
-    public function check()
+    public function check(Task $task)
     {
-        //
+        $task->toggleCompleted();
+        $task->save();
+        
+        return redirect()->back();
     }
 }
