@@ -9,9 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
-        
-        return view('tasks.index', ['tasks' => $tasks]);
+        return view('tasks.index', ['tasks' => Task::all()]);
     }
     
     public function create()
@@ -29,9 +27,9 @@ class TaskController extends Controller
         return view('tasks.show', ['task' => $task]);
     }
     
-    public function edit()
+    public function edit(Task $task)
     {
-        return view('tasks.edit');
+        return view('tasks.edit', ['task' => $task]);
     }
     
     public function update()

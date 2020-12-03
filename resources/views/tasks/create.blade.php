@@ -2,4 +2,6 @@
 
 @section('content')
 
-create page
+    <h1>New Task</h1>
+
+@endsection
