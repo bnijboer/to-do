@@ -12,8 +12,8 @@
     <p>   
         <strong>Image:</strong>
         
-        @if (!empty($task->image)) 
-            {{ $task->image }}
+        @if(isset($task->image))
+            <img src="{{ asset('storage/' . $task->image) }}">
         @else
             none
         @endif

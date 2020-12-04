@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -20,12 +21,13 @@ class TaskController extends Controller
     
     public function store()
     {
-        $validated = $this->validateData();
+        $validatedData = $this->validateData();
         
-        Task::create([
-            'description'   => $validated['description'],
-            'image'         => empty($validated['image']) ? null : $validated['image']->store('images')
-        ]);
+        if (request('image')) {
+            $validatedData['image'] = request('image')->store('images');
+        }
+        
+        Task::create($validatedData);
         
         return redirect()->route('index');
     }
@@ -46,12 +48,13 @@ class TaskController extends Controller
     
     public function update(Task $task)
     {
-        $validated = $this->validateData();
+        $validatedData = $this->validateData();
         
-        $task->update([
-            'description'   => $validated['description'],
-            'image'         => empty($validated['image']) ? null : $validated['image']->store('images')
-        ]);
+        if (request('image')) {
+            $validatedData['image'] = request('image')->store('images');
+        }
+        
+        $task->update($validatedData);
         
         return redirect()->route('show', [$task]);
     }
@@ -59,6 +62,8 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
+        
+        Storage::delete($task->image);
         
         return redirect()->route('index');
     }
@@ -74,7 +79,7 @@ class TaskController extends Controller
     public function validateData()
     {
         return request()->validate([
-            'description' => ['required', 'max:100'],
+            'description' => ['required', 'string', 'max:100'],
             'image' => ['image']
         ]);
     }

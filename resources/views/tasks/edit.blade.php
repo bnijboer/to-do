@@ -40,7 +40,6 @@
                     type="file"
                     id="image"
                     name="image"
-                    value="{{ $task->image }}"
                 >
             </div>
             <p>

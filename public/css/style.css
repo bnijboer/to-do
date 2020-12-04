@@ -5,3 +5,7 @@
 .task-completed {
     text-decoration: line-through
 }
+
+img {
+    width: 200px;
+}
