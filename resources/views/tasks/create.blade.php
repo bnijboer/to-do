@@ -2,16 +2,17 @@
 
 @section('content')
 
-    <h1>New Task</h1>
+    @section('heading', 'New Task')    
     
     @if ($errors->any())
         <div class="alert alert-danger">
-            <h4>The following errors occured:</h4>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            <h6>The following error(s) occured:</h6>
+            
+            @foreach ($errors->all() as $error)
+                <div class="small pl-2">
+                    {{ $error }}
+                </div>
+            @endforeach
         </div>
     @endif
     
@@ -42,7 +43,7 @@
                 >
             </div>
             <p>
-                <button type="submit">
+                <button class="btn btn-success" type="submit">
                     Add
                 </button>
             </p>

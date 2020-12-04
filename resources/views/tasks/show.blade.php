@@ -2,14 +2,14 @@
 
 @section('content')
 
-    <h1>Task</h1>
+    @section('heading', 'View Task')
     
     <p>
         <strong>Description:</strong>
         
         {{ $task->description }}
     </p>
-    <p>   
+    <p>
         <strong>Image:</strong>
         
         @if(isset($task->image))
@@ -30,18 +30,22 @@
         
         (<a href="/{{ $task->id }}/mark">toggle</a>)
     </p>
-    <p>
-        <a href="/{{ $task->id }}/edit">
-            Edit
-        </a>
-        <form action="/{{ $task->id }}" method="POST">
-            @csrf
-            @method('DELETE')
-            
-            <button type="submit">
-                Delete
-            </button>
-        </form>
-    </p>
+    <div>
+        <div class="d-inline-block">
+            <a class="btn btn-warning" href="/{{ $task->id }}/edit">
+                Edit
+            </a>
+        </div>
+        <div class="d-inline-block">
+            <form action="/{{ $task->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                
+                <button class="btn btn-danger" type="submit">
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
 
 @endsection

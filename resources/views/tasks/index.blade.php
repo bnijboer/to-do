@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>All Tasks</h1>
+    @section('heading', 'All Tasks')    
 
     @forelse ($tasks as $task)
         <div>
@@ -18,7 +18,7 @@
                 @csrf
                 @method('DELETE')
                 
-                <button type="submit">
+                <button class="btn btn-danger" type="submit">
                     Delete
                 </button>
             </form>

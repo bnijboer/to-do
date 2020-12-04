@@ -1,22 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <h1>Edit Task</h1>
+    
+    @section('heading', 'Edit Task')
     
     @if ($errors->any())
         <div class="alert alert-danger">
-            <h4>The following errors occured:</h4>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            <h6>The following error(s) occured:</h6>
+            
+            @foreach ($errors->all() as $error)
+                <div class="small pl-2">
+                    {{ $error }}
+                </div>
+            @endforeach
         </div>
     @endif
     
     <div>
-        <form action="/{{ $task->id }}" method="POST" enctype="multipart/form-data">
+        <form
+            class="d-inline-block"
+            action="/{{ $task->id }}"
+            method="POST"
+            enctype="multipart/form-data"
+        >
             @csrf
             @method('PUT')
             
@@ -42,22 +48,22 @@
                     name="image"
                 >
             </div>
-            <p>
-                <button type="submit">
+            <div>
+                <button class="btn btn-primary" type="submit">
                     Update
                 </button>
-            </p>
+            </div>
         </form>
-        <p>
+        <div class="d-inline-block">
             <form action="/{{ $task->id }}" method="POST">
                 @csrf
                 @method('DELETE')
                 
-                <button type="submit">
+                <button class="btn btn-danger" type="submit">
                     Delete
                 </button>
             </form>
-        </p>
+        </div>
     </div>
 
 @endsection
