@@ -8,15 +8,14 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        
-        
-        
-        
-        <div class="container border mt-5 p-3">
-            <div class="text-center text-uppercase">
-                <div class="d-inline pr-5">
-                    <a href="{{ route('index') }}">
-                        All Tasks
+        <div class="container border mt-5 px-0 pb-3">
+            <div class="bg-light py-2">
+                <div class="d-inline pl-3 pr-4">
+                    <a
+                        class="text-decoration-none"
+                        href="{{ route('index') }}"
+                    >
+                        Tasks
                     </a>
                 </div>
                 <div class="d-inline">
@@ -25,13 +24,17 @@
                     </a>
                 </div>
             </div>
-            <div class="text-center py-3">
-                <h1>@yield('heading')</h1>
-            </div>
-            <div>
-                @yield('content')
+            
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="text-center py-3">
+                        <h1>@yield('heading')</h1>
+                    </div>
+                    <div>
+                        @yield('content')
+                    </div>
+                </div>
             </div>
         </div>
-        
     </body>
 </html>

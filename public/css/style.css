@@ -1,11 +1,23 @@
-.inline {
-    display: inline;
+.mark-unmark:hover, .mark-unmark:focus {
+    text-decoration: none !important;
 }
 
-.task-completed {
-    text-decoration: line-through
+.hover-mark a:hover, .hover-mark a:focus, .mark-unmark {
+    text-decoration: line-through;
 }
 
 img {
     width: 200px;
+}
+
+.btn {
+    width: 80px;
+}
+
+a {
+    color: gray;
+}
+
+a:hover {
+    color: black;
 }

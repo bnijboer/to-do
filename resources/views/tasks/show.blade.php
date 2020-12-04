@@ -4,47 +4,64 @@
 
     @section('heading', 'View Task')
     
-    <p>
-        <strong>Description:</strong>
-        
-        {{ $task->description }}
-    </p>
-    <p>
-        <strong>Image:</strong>
-        
-        @if(isset($task->image))
-            <img src="{{ asset('storage/' . $task->image) }}">
-        @else
-            none
-        @endif
-    </p>
-    <p>
-        <strong>Created at:</strong>
-        
-        {{ $task->created_at }} 
-    </p>
-    <p>   
-        <strong>Completed:</strong>
-        
-        {{ $task->completed ? 'yes' : 'no' }}
-        
-        (<a href="/{{ $task->id }}/mark">toggle</a>)
-    </p>
-    <div>
-        <div class="d-inline-block">
-            <a class="btn btn-warning" href="/{{ $task->id }}/edit">
-                Edit
-            </a>
+    <div class="col-10 mx-auto bg-light border p-3">
+        <div class="d-flex justify-content-between small py-2">
+            <div class="font-weight-light text-uppercase">
+                Description
+            </div>
+            <div>
+                {{ $task->description }}
+            </div>
         </div>
-        <div class="d-inline-block">
-            <form action="/{{ $task->id }}" method="POST">
-                @csrf
-                @method('DELETE')
+        <div class="d-flex justify-content-between small py-2">
+            <div class="font-weight-light text-uppercase">
+                Image
+            </div>
+            
+            <div>
+                @if(isset($task->image))
+                    <img src="{{ asset('storage/' . $task->image) }}">
+                @else
+                    none
+                @endif
+            </div>
+        </div>
+        <div class="d-flex justify-content-between small py-2">
+            <div class="font-weight-light text-uppercase">
+                Created at
+            </div>
+            <div>
+                {{ $task->created_at }} 
+            </div>
+        </div>
+        <div class="d-flex justify-content-between small py-2">
+            <div class="font-weight-light text-uppercase">
+                Completed
+            </div>
+            <div>
+                {{ $task->completed ? 'yes' : 'no' }}
                 
-                <button class="btn btn-danger" type="submit">
-                    Delete
-                </button>
-            </form>
+                <a class="btn-sm btn-info text-decoration-none ml-3" href="/{{ $task->id }}/mark">
+                    toggle
+                </a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center pt-3">
+            <div class="mr-4">
+                <a class="btn btn-warning text-white" href="/{{ $task->id }}/edit">
+                    Edit
+                </a>
+            </div>
+            <div>
+                <form action="/{{ $task->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    
+                    <button class="btn btn-danger" type="submit">
+                        Delete
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
