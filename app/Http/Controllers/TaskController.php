@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -21,9 +20,12 @@ class TaskController extends Controller
     
     public function store()
     {
-        Task::create(
-            $this->validateData()
-        );
+        $validated = $this->validateData();
+        
+        Task::create([
+            'description'   => $validated['description'],
+            'image'         => empty($validated['image']) ? null : $validated['image']->store('images')
+        ]);
         
         return redirect()->route('index');
     }
@@ -44,10 +46,14 @@ class TaskController extends Controller
     
     public function update(Task $task)
     {
-        $task->update($this->validateData());
+        $validated = $this->validateData();
         
-        return redirect()
-            ->route('show', [$task]);
+        $task->update([
+            'description'   => $validated['description'],
+            'image'         => empty($validated['image']) ? null : $validated['image']->store('images')
+        ]);
+        
+        return redirect()->route('show', [$task]);
     }
     
     public function destroy(Task $task)
@@ -68,8 +74,8 @@ class TaskController extends Controller
     public function validateData()
     {
         return request()->validate([
-            'description' => ['required'],
-            'image' => [],
+            'description' => ['required', 'max:100'],
+            'image' => ['image']
         ]);
     }
 }

@@ -23,7 +23,7 @@ class TaskFactory extends Factory
     {
         return [
             'description' => $this->faker->sentence(),
-            'image' => '/images/example.jpg',
+            'image' => 'images/example.jpg',
         ];
     }
 }
