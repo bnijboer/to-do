@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -61,9 +60,8 @@ class TaskController extends Controller
     
     public function destroy(Task $task)
     {
+        $task->deleteStoredImage();
         $task->delete();
-        
-        Storage::delete($task->image);
         
         return redirect()->route('index');
     }
@@ -71,6 +69,15 @@ class TaskController extends Controller
     public function mark(Task $task)
     {
         $task->toggleCompleted();
+        $task->save();
+        
+        return redirect()->back();
+    }
+    
+    public function removeImage(Task $task)
+    {
+        $task->deleteStoredImage();
+        $task->image = null;
         $task->save();
         
         return redirect()->back();

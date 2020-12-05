@@ -19,7 +19,10 @@
                     </a>
                 </div>
                 <div class="d-inline">
-                    <a href="{{ route('create') }}">
+                    <a
+                        class="text-decoration-none" 
+                        href="{{ route('create') }}"
+                    >
                         New Task
                     </a>
                 </div>
@@ -27,8 +30,8 @@
             
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <div class="text-center py-3">
-                        <h1>@yield('heading')</h1>
+                    <div class="text-center text-dark py-3">
+                        <h2>@yield('heading')</h2>
                     </div>
                     <div>
                         @yield('content')

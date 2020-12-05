@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @section('heading', 'View Task')
+    @section('heading', 'Task Details')
     
     <div class="col-10 mx-auto bg-light border p-3">
         <div class="d-flex justify-content-between small py-2">
@@ -21,6 +21,11 @@
             <div>
                 @if(isset($task->image))
                     <img src="{{ asset('storage/' . $task->image) }}">
+                    <a
+                        class="d-block btn-sm btn-danger text-center text-decoration-none mt-2"
+                        href="{{ $task->id }}/remove-image">
+                        remove image
+                    </a>
                 @else
                     none
                 @endif
@@ -42,7 +47,7 @@
                 {{ $task->completed ? 'yes' : 'no' }}
                 
                 <a class="btn-sm btn-info text-decoration-none ml-3" href="/{{ $task->id }}/mark">
-                    toggle
+                    {{ $task->completed ? 'uncheck' : 'check' }}
                 </a>
             </div>
         </div>
